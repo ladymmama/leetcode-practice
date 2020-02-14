@@ -14,5 +14,5 @@ def ishappy(n):
             d[n] = 1
 
 
-ishappy(19)
+print(ishappy(99))
 
