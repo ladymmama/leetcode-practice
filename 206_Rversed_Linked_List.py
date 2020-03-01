@@ -6,19 +6,20 @@
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        # Solution 2
+        """
+        # Solution 1
         # iteration: time: O(n), space: O(1)
         prev = None
         curr = head
-        while (curr != None):  # use iteration, if current node is not None
-            nextNode = curr.next  # define a nextNode = current.next
-            curr.next = prev  # make the curr.next point to the previous one
-            prev = curr  # assign current value to previous, thus curr.next point to curr
-            curr = nextNode  # curr move to the next node.
-        return prev  # return the tail which should be head for reversed list
+        while(curr != None):           # use iteration, if current node is not None
+            nextNode = curr.next       # define a nextNode = current.next
+            curr.next = prev           # make the curr.next point to the previous one
+            prev = curr                # assign current value to previous, thus curr.next point to curr
+            curr = nextNode            # curr move to the next node.
+        return prev                    # return the tail which should be head for reversed list
 
-        """
-        #Solution 2 
+
+        #Solution 2
         # recuesion: time: O(n), space: O(n)
         if not head or not head.next:
             return head
@@ -27,3 +28,11 @@ class Solution:
         head.next = None
         return res
         """
+
+        # Solution 3:
+        # iteration: time: O(n), space: O(1)
+        dummy = ListNode(0)
+        while head:
+            dummy.next, head.next, head = head, dummy.next, head.next
+
+        return dummy.next
